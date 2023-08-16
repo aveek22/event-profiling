@@ -9,7 +9,7 @@ producer_config = {
 }
 producer = Producer(producer_config)
 
-for i in range(1, 10):
+for i in range(1, 20):
     (key, event) = raw_events.create()
     producer.produce(topic= "tracking.events.raw.v1", key = key, value= json.dumps(event))
     # print(event)
