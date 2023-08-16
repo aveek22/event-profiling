@@ -37,3 +37,26 @@ services:
         KAFKA_MIN_INSYNC_REPLICAS: '1'
         KAFKA_GROUP_INITIAL_REBALANCE_DELAY_MS: 0
         KAFKA_AUTO_CREATE_TOPICS_ENABLE: 'true'
+
+    redis:
+      image:  public.ecr.aws/docker/library/redis:5.0.10
+      container_name: redis
+      ports:
+        - "6379:6379"
+      healthcheck:
+        test: [ "CMD", "redis-cli","ping" ]
+
+    akhq:
+      image: tchiotludo/akhq:0.24.0
+      container_name: akhq
+      environment:
+        AKHQ_CONFIGURATION: |
+          akhq:
+            connections:
+              docker-kafka-server:
+                properties:
+                  bootstrap.servers: "kafka:29092"
+      ports:
+        - '8080:8080'
+      links:
+        - kafka
