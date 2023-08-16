@@ -2,7 +2,7 @@
 
 import json
 from confluent_kafka import Producer
-import generate_events
+import raw_events
 
 producer_config = {
     "bootstrap.servers": "localhost:9092"
@@ -10,7 +10,7 @@ producer_config = {
 producer = Producer(producer_config)
 
 for i in range(1, 10):
-    (key, event) = generate_events.create()
+    (key, event) = raw_events.create()
     producer.produce(topic= "tracking.events.raw.v1", key = key, value= json.dumps(event))
     # print(event)
 
