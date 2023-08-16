@@ -8,6 +8,7 @@ packages = [{include = "event_profiling"}]
 
 [tool.poetry.dependencies]
 python = "^3.8"
+confluent-kafka = "^2.2.0"
 
 
 [build-system]
