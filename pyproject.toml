@@ -1,0 +1,15 @@
+[tool.poetry]
+name = "event-profiling"
+version = "0.1.0"
+description = "Create profiles from tracking events."
+authors = ["Aveek Das <aveek.das@dpgmedia.be>"]
+readme = "README.md"
+packages = [{include = "event_profiling"}]
+
+[tool.poetry.dependencies]
+python = "^3.8"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
